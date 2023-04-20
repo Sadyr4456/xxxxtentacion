@@ -1,32 +1,139 @@
-# Prerequisites
-*.d
+#include <iostream>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include <string>
 
-# Precompiled Headers
-*.gch
-*.pch
+#include <fstream>
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+using namespace std;
 
-# Fortran module files
-*.mod
-*.smod
+struct dekan {
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+	string name[14];	string code[14];
 
-# Executables
-*.exe
-*.out
-*.app
+	int curs[14];
+
+	float gpa[14];
+
+};
+
+int main()
+
+{
+
+	setlocale(LC_ALL, "rus");
+
+	int n;
+
+	cout << "Судент саны: "; cin >> n;
+
+	dekan dkt;
+
+	for (int i = 0; i < n; i++) {
+
+		cout << "-Студенттин атын енгизиниз: \n";
+
+		cin >> dkt.name[i];
+
+		cout << "-Кай топта окид: ";
+
+		cin >> dkt.code[i];
+
+		cout << "-Курс: ";
+
+		cin >> dkt.curs[i];
+
+		cout << "-GPA балды енгизиниз: ";
+
+		cin >> dkt.gpa[i];
+
+		cout << endl;
+
+	}
+
+	cout << endl;
+
+	for (int i = 0; i < n; i++)
+
+	{
+
+		cout << "\n-----------------------------------------\n";
+
+		cout << "*Студент " << dkt.name[i] << endl;
+
+		cout << "*Тобы: " << dkt.code[i] << endl;
+
+		cout << "*Курс: " << dkt.curs[i] << endl;
+
+		cout << "*GPA: " << dkt.gpa[i] << endl;
+
+		if (dkt.curs[i] >= 2 && dkt.gpa[i] < 2)
+
+		{
+
+			cout << "\nКелеси курска тусуге руксат жок, GPA балл аз(2 балдан томен болмауы керек) \n";
+
+		}
+
+		else
+
+		{
+
+			cout << "\nКелеси курска тусуге руксат бар\n ";
+
+			cout << "\n----------------------------------------\n";
+
+		}
+
+	}
+
+	ofstream fl;
+
+	fl.open("Students.txt");
+
+	for (int i = 0; i < n; i++) {
+
+		fl << "\n-------------------------------------------------\n";
+
+		fl << "Студент " << dkt.name[i] << endl;
+
+		fl << "Тобы: " << dkt.code[i] << endl;
+
+		fl << "Курс: " << dkt.curs[i] << endl;
+
+		fl << "GPA: " << dkt.gpa[i] << endl;
+
+		if (dkt.curs[i] >= 2 && dkt.gpa[i] < 2)
+
+		{
+
+			fl << "\nКелеси курска руксат жок, GPA балл аз(2 балдан томен болмауы керек) \n";
+
+			fl << "\n-------------------------------------------------\n";
+
+		}
+
+		else
+
+		{
+
+			fl << "\nРуксат бар: \n";
+
+			fl << "\n----------------------------------------\n";
+
+		}
+
+	}
+
+	fl.close();
+
+}
+
+			
+
+			
+
+		
+
+	
+
+	
